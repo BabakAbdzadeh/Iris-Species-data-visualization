@@ -14,7 +14,7 @@ def parse(raw_file, delimiter):
 	opened_file.close()
 	return parsed_data
 
-def visual_location():
+def visual_spicies():
 	data_file = parse(MY_FILE, ",")
 	petal_len = []
  	petal_wid = []
@@ -50,12 +50,9 @@ def visual_location():
 	y_label.set_color("black")
 	plt.legend(loc ="upper right", frameon = False)
 	plt.show()
-#	zipped_petal = zip(petal_len, petal_wid)
-#	zipped_sepal = zip(sepal_len, sepal_wid)
-#	zipped_xy = zip(list_y, list_x)
-#	zipped_xy.sort()
-#	plt.scatter(*zip(*zipped_xy))
-#	plt.show()
+
+
+
 
 
 
