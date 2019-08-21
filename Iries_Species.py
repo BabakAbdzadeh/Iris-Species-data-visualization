@@ -1,8 +1,9 @@
 import csv
 import matplotlib.pyplot as plt
+import matplotlib.lines as mlines
 import numpy as np
 
-MY_FILE = "/home/parallels/MySourceFiles/Data/iris-species/Iris.csv"
+MY_FILE = "csv file address here !!"
 
 def parse(raw_file, delimiter):
 	opened_file = open(raw_file)
@@ -14,7 +15,7 @@ def parse(raw_file, delimiter):
 	opened_file.close()
 	return parsed_data
 
-def visual_spicies():
+def visual_len_wid():
 	data_file = parse(MY_FILE, ",")
 	petal_len = []
  	petal_wid = []
@@ -31,9 +32,10 @@ def visual_spicies():
 	sepal_len = list(map(float, sepal_len))
 	sepal_wid = list(map(float, sepal_wid))
 
-	zipped = zip(sepal_len, sepal_wid)
-	# zipped.sort()
+	
+	
 	color = []
+	
 	for spicies in spicies_list:
 		if spicies == "Iris-setosa":
 			color.append("r")	
@@ -41,14 +43,20 @@ def visual_spicies():
 			color.append("g")
 		elif spicies == "Iris-virginica":
 			color.append("b")
-	label = "Iris Setosa = RED""\n""Iris Versicolor = GREEN""\n""Iris Virginica = BLUE"
-	plt.scatter(sepal_len, sepal_wid,s = 10, c= color,marker = "x", label = label)
+	iris_setosa = mlines.Line2D([], [], color = 'red', marker = 's', linestyle = 'none', markersize = 10, label = "Iris-setosa" )
+	iris_versicolor = mlines.Line2D([], [], color = 'green', marker = 's', linestyle = 'none', markersize = 10, label = "Iris-versicolor" )
+	iris_virginica = mlines.Line2D([], [], color = 'blue', marker = 's', linestyle = 'none', markersize = 10, label = "Iris-virginic" )
+
+
+ 
+	#label = "Iris Setosa = RED""\n""Iris Versicolor = GREEN""\n""Iris Virginica = BLUE"
+	plt.scatter(sepal_len, sepal_wid,s = 10, c= color,marker = "s")
 	plt.title("SepalWidth vs SepalLength")
 	x_label=plt.xlabel("SepalLengthCm")
 	x_label.set_color("black")
 	y_label=plt.ylabel("SepalWidthCm")
 	y_label.set_color("black")
-	plt.legend(loc ="upper right", frameon = False)
+	plt.legend(handles=[iris_setosa, iris_versicolor, iris_virginica])
 	plt.show()
 
 
@@ -59,6 +67,6 @@ def visual_spicies():
 
 
 def main():
-	visual_location()
+	visual_len_wid()
 if __name__ == "__main__":
 	main()
